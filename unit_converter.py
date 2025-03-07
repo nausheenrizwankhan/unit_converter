@@ -19,7 +19,16 @@ def convert_units(value, unit_from, unit_to):
         )  # Otherwise, multiply by the conversion factor
     else:
         return "Conversion not supported"  # Return message if conversion is not defined
+# Streamlit UI setup
+st.set_page_config(page_title="Unit Converter", page_icon="🌍", layout="centered")  # Set title for the web app
 
+st.markdown(
+    """
+    <h1 style='text-align: center;'>🌍 Unit Converter</h1>
+    <h3 style='text-align: center; color: grey;'>Convert meters, kilometers, grams and kilograms </h3>
+    <p style='text-align: center;'>Select a category, enter a value, and see the conversion in real-time!</p>
+    """, unsafe_allow_html=True
+)
 
 # Streamlit UI setup
 st.title(" Unit Converter")  # Set title for the web app
@@ -39,3 +48,6 @@ unit_to = st.selectbox("Convert to:", ["meters", "kilometers", "grams", "kilogra
 if st.button("Convert"):
     result = convert_units(value, unit_from, unit_to)  # Call the conversion function
     st.write(f"Converted Value: {result}")  # Display the result
+
+# Footer
+st.markdown("<br><hr><p style='text-align: center;'>Built with ❤️ using Streamlit</p>", unsafe_allow_html=True)
